@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aroma & Ember | Premium Artisan Coffeehouse</title>
+    <meta name="description" content="Experience premium, sustainably sourced artisan coffee in a warm, cozy atmosphere.">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAF7F2; /* Cream background */
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+<body class="text-stone-800 antialiased" x-data="{ mobileMenu: false }">
+
+    <nav class="sticky top-0 z-50 bg-[#FAF7F2]/90 backdrop-blur-md border-b border-stone-200/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="#home" class="font-serif text-2xl font-bold tracking-wide text-[#3E2723] flex items-center gap-2">
+                        <span class="text-[#2E4F4F]">☕</span> Aroma & Ember
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8 font-medium text-sm tracking-wide text-stone-600">
+                    <a href="#home" class="hover:text-[#3E2723] transition-colors">Home</a>
+                    <a href="#menu" class="hover:text-[#3E2723] transition-colors">Menu</a>
+                    <a href="#promotions" class="hover:text-[#3E2723] transition-colors">Promotions</a>
+                    <a href="#about" class="hover:text-[#3E2723] transition-colors">Our Story</a>
+                    <a href="#contact" class="hover:text-[#3E2723] transition-colors">Contact</a>
+                    <a href="#menu" class="bg-[#2E4F4F] text-[#FAF7F2] px-5 py-2.5 rounded-full hover:bg-[#1A3038] transition-all transform hover:-translate-y-0.5 shadow-sm">Order Now</a>
+                </div>
+                <div class="md:hidden">
+                    <button @click="mobileMenu = !mobileMenu" class="text-stone-700 hover:text-[#3E2723] focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path x-show="!mobileMenu" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="mobileMenu" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div x-show="mobileMenu" x-collapse class="md:hidden bg-[#FAF7F2] border-b border-stone-200 px-4 pt-2 pb-6 space-y-3 shadow-lg">
+            <a href="#home" @click="mobileMenu = false" class="block px-3 py-2 text-base font-medium text-stone-700 hover:bg-stone-100 rounded-lg">Home</a>
+            <a href="#menu" @click="mobileMenu = false" class="block px-3 py-2 text-base font-medium text-stone-700 hover:bg-stone-100 rounded-lg">Menu</a>
+            <a href="#promotions" @click="mobileMenu = false" class="block px-3 py-2 text-base font-medium text-stone-700 hover:bg-stone-100 rounded-lg">Promotions</a>
+            <a href="#about" @click="mobileMenu = false" class="block px-3 py-2 text-base font-medium text-stone-700 hover:bg-stone-100 rounded-lg">Our Story</a>
+            <a href="#contact" @click="mobileMenu = false" class="block px-3 py-2 text-base font-medium text-stone-700 hover:bg-stone-100 rounded-lg">Contact</a>
+            <a href="#menu" @click="mobileMenu = false" class="block w-full text-center bg-[#2E4F4F] text-[#FAF7F2] px-4 py-3 rounded-lg font-medium">Order Now</a>
+        </div>
+    </nav>
+
+    <section id="home" class="relative min-h-[calc(100vh-5rem)] flex items-center bg-stone-900 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=2000" alt="Cozy Cafe Interior" class="w-full h-full object-cover opacity-40 scale-105 animate-[pulse_8s_infinite_alternate]">
+            <div class="absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-900/60 to-transparent"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-white">
+            <div class="max-w-2xl space-y-6">
+                <span class="text-[#D4B996] tracking-[0.2em] uppercase text-sm font-semibold block">Crafted with Passion, Served with Warmth</span>
+                <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+                    Where every sip feels like <span class="italic text-[#D4B996]">home</span>.
+                </h1>
+                <p class="text-stone-300 text-lg max-w-xl font-light leading-relaxed">
+                    Escape the rush. Immerse yourself in the rich aroma of hand-selected, locally roasted beans brewed to absolute perfection by master artisans.
+                </p>
+                <div class="pt-4 flex flex-wrap gap-4">
+                    <a href="#menu" class="bg-[#D4B996] text-[#3E2723] font-semibold px-8 py-4 rounded-full hover:bg-[#E5C9A7] transition-all transform hover:-translate-y-1 shadow-lg">View Our Menu</a>
+                    <a href="#about" class="border-2 border-white/80 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 transition-all transform hover:-translate-y-1">Our Story</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-[#F4EFE6] border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="flex gap-4 items-center p-6 bg-[#FAF7F2] rounded-2xl shadow-sm border border-stone-200/60">
+                <div class="text-3xl p-3 bg-[#2E4F4F]/10 text-[#2E4F4F] rounded-xl">🌱</div>
+                <div>
+                    <h3 class="font-bold text-stone-900 text-lg">100% Organic Beans</h3>
+                    <p class="text-stone-600 text-sm mt-1">Sustainably sourced from micro-lot fair trade farms.</p>
+                </div>
+            </div>
+            <div class="flex gap-4 items-center p-6 bg-[#FAF7F2] rounded-2xl shadow-sm border border-stone-200/60">
+                <div class="text-3xl p-3 bg-[#3E2723]/10 text-[#3E2723] rounded-xl">🔥</div>
+                <div>
+                    <h3 class="font-bold text-stone-900 text-lg">In-House Roasting</h3>
+                    <p class="text-stone-600 text-sm mt-1">Small batch roasted daily to bring out bold notes.</p>
+                </div>
+            </div>
+            <div class="flex gap-4 items-center p-6 bg-[#FAF7F2] rounded-2xl shadow-sm border border-stone-200/60">
+                <div class="text-3xl p-3 bg-[#D4B996]/20 text-[#8C6239] rounded-xl">🥐</div>
+                <div>
+                    <h3 class="font-bold text-stone-900 text-lg">Fresh Artisanal Pastries</h3>
+                    <p class="text-stone-600 text-sm mt-1">Baked fresh by local pastry chefs every morning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" 
+             x-data="{ 
+                activeCategory: 'All',
+                searchQuery: '',
+                products: [
+                    { name: 'Classic Espresso', category: 'Espresso', price: '$3.50', rating: '4.9', desc: 'Rich, intense, and full-bodied double shot with perfect crema.', img: 'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?auto=format&fit=crop&q=80&w=500' },
+                    { name: 'Velvet Vanilla Latte', category: 'Latte', price: '$4.75', rating: '4.8', desc: 'Smooth espresso, steamed milk, and premium Madagascar vanilla syrup.', img: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&q=80&w=500' },
+                    { name: 'Spiced Cappuccino', category: 'Cappuccino', price: '$4.50', rating: '4.7', desc: 'Equal parts espresso, milk, and airy foam with a dusting of Ceylon cinnamon.', img: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&q=80&w=500' },
+                    { name: 'Kyoto Cold Brew', category: 'Cold Brew', price: '$5.00', rating: '5.0', desc: 'Slow-dripped for 16 hours, resulting in an ultra-smooth, low-acid experience.', img: 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=80&w=500' },
+                    { name: 'Salted Caramel Tart', category: 'Desserts', price: '$6.50', rating: '4.9', desc: 'Buttery pastry shell with rich dark caramel and flaky sea salt.', img: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&q=80&w=500' },
+                    { name: 'Matcha Infused Latte', category: 'Latte', price: '$5.20', rating: '4.6', desc: 'Ceremonial grade Japanese Uji matcha whisked elegantly with oat milk.', img: 'https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&q=80&w=500' }
+                ],
+                get filteredProducts() {
+                    return this.products.filter(p => {
+                        const matchesCat = this.activeCategory === 'All' || p.category === this.activeCategory;
+                        const matchesSearch = p.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+                        return matchesCat && matchesSearch;
+                    });
+                }
+             }">
+        
+        <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+            <h2 class="font-serif text-4xl sm:text-5xl font-bold text-[#3E2723]">Explore Our Curated Menu</h2>
+            <div class="w-16 h-1 bg-[#D4B996] mx-auto rounded-full"></div>
+            <p class="text-stone-600">Every cup is handcrafted with precision, bringing out the distinct character of the bean terroir.</p>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-6 justify-between items-center mb-12 pb-6 border-b border-stone-200">
+            <div class="flex flex-wrap gap-2 justify-center">
+                <template x-for="cat in ['All', 'Espresso', 'Latte', 'Cappuccino', 'Cold Brew', 'Desserts']">
+                    <button @click="activeCategory = cat" 
+                            :class="activeCategory === cat ? 'bg-[#3E2723] text-white' : 'bg-stone-200/60 text-stone-700 hover:bg-stone-200'"
+                            class="px-5 py-2 rounded-full text-sm font-medium transition-all"
+                            x-text="cat">
+                    </button>
+                </template>
+            </div>
+            <div class="relative w-full md:w-80">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-stone-400">🔍</span>
+                <input type="text" x-model="searchQuery" placeholder="Search beverages & treats..." 
+                       class="w-full pl-10 pr-4 py-2 rounded-full border border-stone-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#3E2723] focus:border-transparent text-sm">
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <template x-for="product in filteredProducts" :key="product.name">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-stone-100 hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-64 overflow-hidden bg-stone-100">
+                        <img :src="product.img" :alt="product.name" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <span class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm text-stone-900 font-semibold text-sm px-3 py-1 rounded-full shadow-sm" x-text="product.price"></span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <div class="flex justify-between items-start">
+                            <h3 class="font-serif text-xl font-bold text-[#3E2723]" x-text="product.name"></h3>
+                            <div class="flex items-center gap-1 text-amber-500 font-medium text-sm">
+                                <span>★</span> <span class="text-stone-700" x-text="product.rating"></span>
+                            </div>
+                        </div>
+                        <p class="text-stone-600 text-sm line-clamp-2" x-text="product.desc"></p>
+                        <div class="pt-4 flex justify-between items-center border-t border-stone-100">
+                            <span class="text-xs tracking-wider uppercase text-stone-400 font-semibold" x-text="product.category"></span>
+                            <button class="text-sm font-semibold text-[#2E4F4F] group-hover:text-[#3E2723] flex items-center gap-1 transition-colors">
+                                Add to Order <span class="group-hover:translate-x-1 transition-transform inline-block">→</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </section>
+
+    <section id="promotions" class="bg-[#2E4F4F] py-24 text-[#FAF7F2]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+                <span class="text-[#D4B996] uppercase tracking-widest text-xs font-semibold">Limited Delights</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-bold">Seasonal Offers & Combos</h2>
+                <div class="w-16 h-0.5 bg-[#D4B996] mx-auto rounded-full"></div>
+            </div>
+
+            <div class="bg-[#3E2723] rounded-3xl p-8 md:p-12 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8 mb-16 relative overflow-hidden border border-stone-700"
+                 x-data="{
+                    expiry: new Date().getTime() + (2 * 24 * 60 * 60 * 1000), 
+                    days: '02', hours: '14', minutes: '45', seconds: '30',
+                    init() {
+                        setInterval(() => {
+                            let now = new Date().getTime();
+                            let d = this.expiry - now;
+                            this.days = String(Math.floor(d / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                            this.hours = String(Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                            this.minutes = String(Math.floor((d % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                            this.seconds = String(Math.floor((d % (1000 * 60)) / 1000)).padStart(2, '0');
+                        }, 1000);
+                    }
+                 }">
+                <div class="space-y-4 max-w-md text-center lg:text-left">
+                    <span class="bg-[#D4B996] text-[#3E2723] text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Winter Feature</span>
+                    <h3 class="font-serif text-3xl font-bold">The Ember Smoked Hazelnut Mocha</h3>
+                    <p class="text-stone-300 font-light text-sm">Rich espresso swirled with dark chocolate, hint of oak smoke extract, topped with house-made toasted hazelnut whip.</p>
+                    <p class="text-[#D4B996] font-bold text-xl">Get 25% OFF before it melts away!</p>
+                </div>
+                <div class="flex gap-4 text-center">
+                    <div class="bg-[#FAF7F2]/10 backdrop-blur-sm p-4 rounded-xl min-w-20 border border-white/10">
+                        <span class="block text-3xl font-bold text-[#D4B996]" x-text="days"></span>
+                        <span class="text-xs uppercase text-stone-300 tracking-wider">Days</span>
+                    </div>
+                    <div class="bg-[#FAF7F2]/10 backdrop-blur-sm p-4 rounded-xl min-w-20 border border-white/10">
+                        <span class="block text-3xl font-bold text-[#D4B996]" x-text="hours"></span>
+                        <span class="text-xs uppercase text-stone-300 tracking-wider">Hrs</span>
+                    </div>
+                    <div class="bg-[#FAF7F2]/10 backdrop-blur-sm p-4 rounded-xl min-w-20 border border-white/10">
+                        <span class="block text-3xl font-bold text-[#D4B996]" x-text="minutes"></span>
+                        <span class="text-xs uppercase text-stone-300 tracking-wider">Min</span>
+                    </div>
+                    <div class="bg-[#FAF7F2]/10 backdrop-blur-sm p-4 rounded-xl min-w-20 border border-white/10">
+                        <span class="block text-3xl font-bold text-[#D4B996]" x-text="seconds"></span>
+                        <span class="text-xs uppercase text-stone-300 tracking-wider">Sec</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+                <div class="bg-[#FAF7F2] text-stone-900 rounded-3xl p-8 flex flex-col sm:flex-row gap-6 items-center shadow-lg border border-stone-200">
+                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=300" alt="Morning Brew Combo" class="w-32 h-32 object-cover rounded-2xl shadow-inner">
+                    <div class="space-y-2 text-center sm:text-left flex-1">
+                        <h4 class="font-serif text-2xl font-bold text-[#3E2723]">The Sunrise Ritual</h4>
+                        <p class="text-stone-600 text-sm">Any Medium Classic Brew paired beautifully with an organic buttery croissant.</p>
+                        <div class="flex items-center justify-between pt-2">
+                            <span class="text-xl font-bold text-[#2E4F4F]">$7.50 <span class="text-stone-400 font-normal line-through text-sm">$9.50</span></span>
+                            <span class="text-xs font-semibold bg-[#2E4F4F]/15 text-[#2E4F4F] px-3 py-1 rounded-full">Save $2.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-[#FAF7F2] text-stone-900 rounded-3xl p-8 flex flex-col sm:flex-row gap-6 items-center shadow-lg border border-stone-200">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=300" alt="Afternoon Break Combo" class="w-32 h-32 object-cover rounded-2xl shadow-inner">
+                    <div class="space-y-2 text-center sm:text-left flex-1">
+                        <h4 class="font-serif text-2xl font-bold text-[#3E2723]">Midday Clarity</h4>
+                        <p class="text-stone-600 text-sm">Elevate your afternoon with a signature Cold Brew paired with our Salted Caramel Tart.</p>
+                        <div class="flex items-center justify-between pt-2">
+                            <span class="text-xl font-bold text-[#2E4F4F]">$9.99 <span class="text-stone-400 font-normal line-through text-sm">$11.50</span></span>
+                            <span class="text-xs font-semibold bg-[#2E4F4F]/15 text-[#2E4F4F] px-3 py-1 rounded-full">Save $1.51</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-[#D4B996]/20 to-[#FAF7F2]/10 backdrop-blur-md rounded-3xl p-8 text-center border border-[#D4B996]/30 max-w-4xl mx-auto space-y-4">
+                <h3 class="font-serif text-2xl font-bold text-[#D4B996]">Join The Ember Circle Loyalty Program</h3>
+                <p class="text-stone-300 max-w-xl mx-auto text-sm leading-relaxed">Earn points with every purchase. Reach 100 points and redeem a complimentary specialty brew of your choice plus access exclusive secret tastings.</p>
+                <div class="pt-2">
+                    <button class="bg-[#FAF7F2] text-[#3E2723] px-8 py-3 rounded-full font-semibold hover:bg-[#D4B996] transition-colors shadow-md">Sign Up & Claim Your First Reward</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-[#FAF7F2]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="text-[#8C6239] uppercase tracking-widest text-xs font-bold">Behind The Brew</span>
+                    <h2 class="font-serif text-4xl sm:text-5xl font-bold text-[#3E2723]">Born Out of a Passion for Rich Tradition</h2>
+                    <p class="text-stone-600 leading-relaxed">
+                        Founded in 2018, Aroma & Ember began with a simple belief: coffee isn't just a caffeine delivery mechanism; it is a shared sensory language. We journey across three continents to partner with independent, multi-generational farmers who practice strict micro-lot cultivation.
+                    </p>
+                    <p class="text-stone-600 leading-relaxed">
+                        Back home, our master roasters meticulously map temperature profiles to accentuate unique notes—from bright citrus Ethiopian profiles to dark, chocolaty Colombian roasts. 
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div>
+                            <span class="block text-3xl font-bold text-[#2E4F4F] font-serif">100%</span>
+                            <span class="text-xs text-stone-500 tracking-wider uppercase">Direct-Trade Sourced</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl font-bold text-[#2E4F4F] font-serif">24+</span>
+                            <span class="text-xs text-stone-500 tracking-wider uppercase">Micro-Lot Varieties</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&q=80&w=400" alt="Coffee preparation" class="rounded-2xl shadow-md h-64 w-full object-cover mt-8">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=400" alt="Coffee pouring" class="rounded-2xl shadow-md h-64 w-full object-cover">
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="text-center max-w-xl mx-auto space-y-2">
+                    <h3 class="font-serif text-3xl font-bold text-[#3E2723]">Our Urban Sanctuary</h3>
+                    <p class="text-stone-600 text-sm">Crafted with raw lumber, copper trims, and warm light to serve as your peaceful second home.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=400" class="h-48 w-full object-cover rounded-xl shadow-sm hover:opacity-90 transition-opacity" alt="Interior Seating">
+                    <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&q=80&w=400" class="h-48 w-full object-cover rounded-xl shadow-sm hover:opacity-90 transition-opacity" alt="Espresso Bar">
+                    <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&q=80&w=400" class="h-48 w-full object-cover rounded-xl shadow-sm hover:opacity-90 transition-opacity" alt="Friendly Barista">
+                    <img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?auto=format&fit=crop&q=80&w=400" class="h-48 w-full object-cover rounded-xl shadow-sm hover:opacity-90 transition-opacity" alt="Cozy Workspace">
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                <div class="text-center max-w-xl mx-auto space-y-2">
+                    <h3 class="font-serif text-3xl font-bold text-[#3E2723]">The Artisans Behind the Counter</h3>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                    <div class="text-center space-y-2">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-white shadow-md" alt="Elena V.">
+                        <h4 class="font-bold text-lg text-[#3E2723]">Elena Vance</h4>
+                        <p class="text-xs text-stone-500 tracking-wider uppercase font-medium">Head Roaster & Co-Founder</p>
+                    </div>
+                    <div class="text-center space-y-2">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-white shadow-md" alt="Marcus T.">
+                        <h4 class="font-bold text-lg text-[#3E2723]">Marcus Thorne</h4>
+                        <p class="text-xs text-stone-500 tracking-wider uppercase font-medium">Champion Barista / Educator</p>
+                    </div>
+                    <div class="text-center space-y-2">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-white shadow-md" alt="Chloe S.">
+                        <h4 class="font-bold text-lg text-[#3E2723]">Chloe Sterling</h4>
+                        <p class="text-xs text-stone-500 tracking-wider uppercase font-medium">Artisanal Pastry Chef</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-[#F4EFE6] border-y border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto space-y-2 mb-16">
+                <span class="text-[#2E4F4F] font-bold text-xs tracking-wider uppercase">Voices From Our Patrons</span>
+                <h2 class="font-serif text-4xl font-bold text-[#3E2723]">Loved by Coffee Purists</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-[#FAF7F2] p-8 rounded-2xl shadow-sm space-y-4 border border-stone-200/40">
+                    <div class="text-amber-500">★★★★★</div>
+                    <p class="text-stone-600 text-sm italic leading-relaxed">"The Kyoto Cold Brew here is a spiritual experience. Unbelievably clean notes without a hint of bitterness. The warm ambient jazz is an added bonus."</p>
+                    <h4 class="font-bold text-sm tracking-wide text-stone-900">— Julian R., Software Architect</h4>
+                </div>
+                <div class="bg-[#FAF7F2] p-8 rounded-2xl shadow-sm space-y-4 border border-stone-200/40">
+                    <div class="text-amber-500">★★★★★</div>
+                    <p class="text-stone-600 text-sm italic leading-relaxed">"An incredible sanctuary in the middle of the urban chaos. The baristas treat brewing like an exact science. Hands down my favorite workspace away from home."</p>
+                    <h4 class="font-bold text-sm tracking-wide text-stone-900">— Sophia L., Digital Designer</h4>
+                </div>
+                <div class="bg-[#FAF7F2] p-8 rounded-2xl shadow-sm space-y-4 border border-stone-200/40">
+                    <div class="text-amber-500">★★★★★</div>
+                    <p class="text-stone-600 text-sm italic leading-relaxed">"The spiced cappuccino combined with their house salted caramel tart is absolute heaven. You can feel the quality and dedication in every little detail here."</p>
+                    <h4 class="font-bold text-sm tracking-wide text-stone-900">— Liam D., Author</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="space-y-8">
+                <div class="space-y-4">
+                    <h2 class="font-serif text-4xl font-bold text-[#3E2723]">Visit Our Sanctuary</h2>
+                    <p class="text-stone-600">Stop by for your morning ritual or an intimate afternoon wind-down. We love meeting fellow aficionados.</p>
+                </div>
+                <div class="space-y-4 border-t border-stone-200 pt-6">
+                    <div class="flex items-start gap-4">
+                        <span class="text-xl">📍</span>
+                        <div>
+                            <h4 class="font-bold text-stone-900">Our Roastery Address</h4>
+                            <p class="text-stone-600 text-sm mt-0.5">482 Amber Hearth Lane, Suite 100, Artisan District</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="text-xl">📞</span>
+                        <div>
+                            <h4 class="font-bold text-stone-900">Direct Inquiries</h4>
+                            <p class="text-stone-600 text-sm mt-0.5">+1 (555) 234-8976 | hello@aromaember.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-[#F4EFE6] p-6 rounded-2xl space-y-3 border border-stone-200">
+                    <h3 class="font-serif text-xl font-bold text-[#3E2723] flex items-center gap-2">🕒 Gathering Hours</h3>
+                    <div class="space-y-1.5 text-sm text-stone-700">
+                        <div class="flex justify-between"><span>Monday – Friday</span><span class="font-medium">6:30 AM – 7:00 PM</span></div>
+                        <div class="flex justify-between"><span>Saturday</span><span class="font-medium">7:00 AM – 8:00 PM</span></div>
+                        <div class="flex justify-between"><span>Sunday</span><span class="font-medium">8:00 AM – 5:00 PM</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-200" 
+                 x-data="{ submitted: false, name: '', email: '', message: '' }">
+                <div x-show="!submitted" class="space-y-6">
+                    <h3 class="font-serif text-2xl font-bold text-[#3E2723]">Drop Us a Line</h3>
+                    <form @submit.prevent="submitted = true" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-stone-500 tracking-wider mb-2">Your Name</label>
+                            <input type="text" x-model="name" required class="w-full px-4 py-3 rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#3E2723] text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-stone-500 tracking-wider mb-2">Email Address</label>
+                            <input type="email" x-model="email" required class="w-full px-4 py-3 rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#3E2723] text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-stone-500 tracking-wider mb-2">Your Message</label>
+                            <textarea rows="4" x-model="message" required class="w-full px-4 py-3 rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#3E2723] text-sm"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-[#2E4F4F] text-white py-3 rounded-xl font-semibold hover:bg-[#1A3038] transition-colors shadow-md">Send Message</button>
+                    </form>
+                </div>
+                <div x-show="submitted" class="text-center py-12 space-y-3" x-cloak>
+                    <span class="text-4xl">✨</span>
+                    <h3 class="font-serif text-2xl font-bold text-[#3E2723]">Message Sent, <span x-text="name"></span>!</h3>
+                    <p class="text-stone-600 text-sm max-w-xs mx-auto">Thank you for reaching out. Our team will review your message and reply via <span class="font-medium" x-text="email"></span> shortly.</p>
+                    <button @click="submitted = false; name=''; email=''; message=''" class="text-xs font-bold underline text-[#2E4F4F] mt-4">Send another message</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full h-80 rounded-3xl overflow-hidden shadow-sm border border-stone-200 relative bg-stone-200">
+            <iframe class="w-full h-full grayscale-[30%] opacity-90" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.6175394982635!2d-73.98685832342337!3d40.74844443538059!2m3!1f0!2f0!3f0!3m2!1i1024!2i1024!3m4!1s0x89c259a9b3117469%3A0xd134e199a405a163!2m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!5e0!3m2!1sen!2sus!4v1710000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="max-w-3xl mx-auto space-y-6">
+            <h3 class="font-serif text-3xl font-bold text-center text-[#3E2723] mb-8">Curiosities & FAQs</h3>
+            
+            <div x-data="{ open: false }" class="bg-white rounded-xl border border-stone-200 overflow-hidden">
+                <button @click="open = !open" class="w-full p-5 text-left font-semibold text-stone-900 flex justify-between items-center hover:bg-stone-50/60">
+                    <span>Do you offer whole bean coffee for home use?</span>
+                    <span class="text-xl transform transition-transform" :class="open ? 'rotate-180' : ''">▾</span>
+                </button>
+                <div x-show="open" x-collapse class="px-5 pb-5 text-stone-600 text-sm leading-relaxed border-t border-stone-100 pt-4">
+                    Yes! All of our premium single-origin and custom signature house blends are available in 12oz and 2lb bags. We can grind them specifically for your home setup (Espresso, French Press, Aeropress, or Drip).
+                </div>
+            </div>
+
+            <div x-data="{ open: false }" class="bg-white rounded-xl border border-stone-200 overflow-hidden">
+                <button @click="open = !open" class="w-full p-5 text-left font-semibold text-stone-900 flex justify-between items-center hover:bg-stone-50/60">
+                    <span>Are there vegan and dairy-free options available?</span>
+                    <span class="text-xl transform transition-transform" :class="open ? 'rotate-180' : ''">▾</span>
+                </button>
+                <div x-show="open" x-collapse class="px-5 pb-5 text-stone-600 text-sm leading-relaxed border-t border-stone-100 pt-4">
+                    Absolutely. We offer organic Oat, Almond, and Coconut milk alternatives. Most of our custom syrups are vegan-friendly, and we carry selected daily gluten-free/vegan pastries.
+                </div>
+            </div>
+
+            <div x-data="{ open: false }" class="bg-white rounded-xl border border-stone-200 overflow-hidden">
+                <button @click="open = !open" class="w-full p-5 text-left font-semibold text-stone-900 flex justify-between items-center hover:bg-stone-50/60">
+                    <span>Can I reserve space for private meetings or remote work?</span>
+                    <span class="text-xl transform transition-transform" :class="open ? 'rotate-180' : ''">▾</span>
+                </button>
+                <div x-show="open" x-collapse class="px-5 pb-5 text-stone-600 text-sm leading-relaxed border-t border-stone-100 pt-4">
+                    Our tables are open to remote workers with free fiber high-speed Wi-Fi. For private workshops or small team meetings, we have a back lounge area available for custom reservations via email.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#1A1A1A] text-[#FAF7F2]/80 pt-16 pb-8 border-t-2 border-[#D4B996]/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-stone-800">
+            <div class="space-y-4">
+                <h3 class="font-serif text-xl font-bold text-white tracking-wide">Aroma & Ember</h3>
+                <p class="text-sm text-stone-400 font-light leading-relaxed">Cultivating an environment where premium artisanal roasting aligns beautifully with cozy community connections.</p>
+                <div class="flex space-x-4 pt-2">
+                    <a href="#" class="hover:text-[#D4B996] text-xl transition-colors">📸</a>
+                    <a href="#" class="hover:text-[#D4B996] text-xl transition-colors">📘</a>
+                    <a href="#" class="hover:text-[#D4B996] text-xl transition-colors">🐦</a>
+                    <a href="#" class="hover:text-[#D4B996] text-xl transition-colors">🎵</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold text-sm tracking-widest uppercase mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#home" class="hover:text-white transition-colors">Home Base</a></li>
+                    <li><a href="#menu" class="hover:text-white transition-colors">Our Menu</a></li>
+                    <li><a href="#promotions" class="hover:text-white transition-colors">Seasonal Specials</a></li>
+                    <li><a href="#about" class="hover:text-white transition-colors">Our Philosophy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold text-sm tracking-widest uppercase mb-4">Helpful Utilities</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#contact" class="hover:text-white transition-colors">Location & Map</a></li>
+                    <li><a href="#contact" class="hover:text-white transition-colors">Support & Contact</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold text-sm tracking-widest uppercase mb-4">The Digital Newsletter</h4>
+                <p class="text-xs text-stone-400 mb-3">Receive early access notifications to small-batch micro-lot arrivals.</p>
+                <div class="flex rounded-lg overflow-hidden border border-stone-700 text-sm">
+                    <input type="email" placeholder="Your Email" class="w-full px-3 py-2 bg-stone-900 focus:outline-none text-white text-xs">
+                    <button class="bg-[#D4B996] text-[#3E2723] font-bold px-4 hover:bg-[#E5C9A7] transition-colors">Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-stone-500 gap-4">
+            <p>&copy; 2026 Aroma & Ember Coffeehouse. Handcrafted responsibly with premium care.</p>
+            <p class="flex items-center gap-1">Designed for aesthetic harmony ☕✨</p>
+        </div>
+    </footer>
+
+</body>
+</html>

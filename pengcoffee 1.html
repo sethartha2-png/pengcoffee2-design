@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" x-data="{ darkMode: false }" :class="{ 'dark': darkMode }">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peng Cofe | Start your day with Peng Coffee.</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Leckerli+One&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        .font-logo { font-family: 'Leckerli One', cursive; }
+        .font-heading { font-family: 'Montserrat', sans-serif; }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-[#FAF7F2] text-stone-800 transition-colors duration-300 dark:bg-[#12110F] dark:text-stone-200" x-data="{ mobileMenu: false }">
+
+    <a href="#product" class="fixed bottom-6 right-6 z-50 bg-[#6F4E37] hover:bg-[#593E2B] text-[#FAF7F2] p-4 rounded-full shadow-2xl transition-all transform hover:scale-110 flex items-center justify-center group border border-[#F5E6D3]/20">
+        <span class="absolute right-full mr-3 bg-[#355E3B] text-[#FAF7F2] text-xs font-semibold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-md">Order Now</span>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+    </a>
+
+    <nav class="sticky top-0 z-50 bg-[#FAF7F2]/90 dark:bg-[#12110F]/90 backdrop-blur-md border-b border-stone-200/60 dark:border-stone-800/60 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <div class="flex-shrink-0">
+                    <a href="#home" class="font-logo text-3xl text-[#6F4E37] dark:text-[#F5E6D3] tracking-wide flex items-center gap-2">
+                        <span class="text-[#355E3B]">☕</span> Peng Cofe
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                    <a href="#home" class="hover:text-[#6F4E37] dark:hover:text-[#F5E6D3] transition-colors">Home</a>
+                    <a href="#product" class="hover:text-[#6F4E37] dark:hover:text-[#F5E6D3] transition-colors">Menu</a>
+                    <a href="#promotion" class="hover:text-[#6F4E37] dark:hover:text-[#F5E6D3] transition-colors">Promotions</a>
+                    <a href="#about" class="hover:text-[#6F4E37] dark:hover:text-[#F5E6D3] transition-colors">About Us</a>
+                    <a href="#contact" class="hover:text-[#6F4E37] dark:hover:text-[#F5E6D3] transition-colors">Contact</a>
+                    
+                    <button @click="darkMode = !darkMode" class="p-2 rounded-full hover:bg-stone-200/50 dark:hover:bg-stone-800/50 text-stone-600 dark:text-stone-400 transition-all focus:outline-none" title="Toggle Theme">
+                        <svg x-show="!darkMode" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                        <svg x-show="darkMode" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.242 17.657l.707.707M6.343 4.343l.707.707M14.142 14.142a4 4 0 11-5.656-5.656 4 4 0 015.656 5.656z"/></svg>
+                    </button>
+                    
+                    <a href="#product" class="bg-[#355E3B] text-white px-5 py-2.5 rounded-full hover:bg-[#27462C] transition-all transform hover:-translate-y-0.5 shadow-sm font-heading font-bold tracking-wider text-xs">Order Now</a>
+                </div>
+                
+                <div class="flex items-center gap-4 md:hidden">
+                    <button @click="darkMode = !darkMode" class="p-2 text-stone-600 dark:text-stone-400">
+                        <svg x-show="!darkMode" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                        <svg x-show="darkMode" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.242 17.657l.707.707M6.343 4.343l.707.707M14.142 14.142a4 4 0 11-5.656-5.656 4 4 0 015.656 5.656z"/></svg>
+                    </button>
+                    <button @click="mobileMenu = !mobileMenu" class="text-stone-700 dark:text-stone-300 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path x-show="!mobileMenu" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="mobileMenu" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div x-show="mobileMenu" x-transition class="md:hidden bg-[#FAF7F2] dark:bg-[#12110F] border-b border-stone-200 dark:border-stone-800 px-4 pt-2 pb-6 space-y-3 shadow-xl">
+            <a href="#home" @click="mobileMenu = false" class="block px-3 py-2 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800">Home</a>
+            <a href="#product" @click="mobileMenu = false" class="block px-3 py-2 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800">Menu</a>
+            <a href="#promotion" @click="mobileMenu = false" class="block px-3 py-2 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800">Promotions</a>
+            <a href="#about" @click="mobileMenu = false" class="block px-3 py-2 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800">About Us</a>
+            <a href="#contact" @click="mobileMenu = false" class="block px-3 py-2 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800">Contact</a>
+            <a href="#product" @click="mobileMenu = false" class="block w-full text-center bg-[#355E3B] text-white px-4 py-3 rounded-xl font-heading font-bold">Order Now</a>
+        </div>
+    </nav>
+
+    <header id="home" class="relative min-h-[calc(100vh-5rem)] flex items-center bg-stone-900 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=2000" alt="Cinematic Coffee Background" class="w-full h-full object-cover opacity-50 scale-105 animate-[pulse_8s_infinite_alternate]">
+            <div class="absolute inset-0 bg-gradient-to-r from-stone-950 via-stone-900/60 to-transparent"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-white w-full">
+            <div class="max-w-2xl space-y-6">
+                <span class="inline-flex items-center gap-2 bg-[#8B2E2E]/30 border border-[#8B2E2E]/50 text-[#FFA4A4] px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest">
+                    <span class="w-2 h-2 rounded-full bg-[#8B2E2E] animate-ping"></span> Premium Cafe Atmosphere
+                </span>
+                <h1 class="font-heading font-extrabold text-5xl sm:text-6xl lg:text-7xl leading-tight">
+                    Start your day with <span class="text-[#F5E6D3] font-logo font-normal lowercase block mt-1">Peng Coffee.</span>
+                </h1>
+                <p class="text-stone-300 text-lg max-w-xl font-light leading-relaxed">
+                    Delivering a warm, comforting hug in a mug that brightens your mood, clears your vision, and connects communities.
+                </p>
+                <div class="pt-4 flex flex-wrap gap-4">
+                    <a href="#product" class="bg-[#6F4E37] hover:bg-[#593E2B] text-white font-heading font-bold tracking-wider text-sm px-8 py-4 rounded-xl transition-all transform hover:-translate-y-1 shadow-lg border border-[#F5E6D3]/20">Order Now</a>
+                    <a href="#product" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-heading font-bold tracking-wider text-sm px-8 py-4 rounded-xl transition-all border border-white/20">Explore Menu</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-20 bg-[#F5E6D3]/40 dark:bg-[#1A1916] transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto space-y-2 mb-16">
+                <span class="text-[#6F4E37] dark:text-[#F5E6D3] uppercase tracking-widest text-xs font-bold block">Crafted Curations</span>
+                <h2 class="font-heading font-bold text-3xl sm:text-4xl text-stone-900 dark:text-white">Our Signature Best Sellers</h2>
+                <div class="w-12 h-0.5 bg-[#6F4E37] mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white dark:bg-[#12110F] rounded-2xl overflow-hidden p-5 shadow-sm hover:shadow-xl transition-all duration-300 group border border-stone-200/40 dark:border-stone-800/60">
+                    <div class="relative h-56 rounded-xl overflow-hidden mb-4">
+                        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&q=80&w=600" alt="Vanilla Latte" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="flex justify-between items-center mb-1">
+                        <h3 class="font-heading font-bold text-lg">Velvet Vanilla Latte</h3>
+                        <span class="text-[#6F4E37] dark:text-[#F5E6D3] font-bold">$4.50</span>
+                    </div>
+                    <p class="text-stone-500 dark:text-stone-400 text-xs line-clamp-2">Premium custom espresso layers paired with smooth steamed whole milk options and sweet vanilla bean syrup infusion.</p>
+                </div>
+                <div class="bg-white dark:bg-[#12110F] rounded-2xl overflow-hidden p-5 shadow-sm hover:shadow-xl transition-all duration-300 group border border-stone-200/40 dark:border-stone-800/60">
+                    <div class="relative h-56 rounded-xl overflow-hidden mb-4">
+                        <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=80&w=600" alt="Nitro Cold Brew" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="flex justify-between items-center mb-1">
+                        <h3 class="font-heading font-bold text-lg">Craft Nitro Cold Brew</h3>
+                        <span class="text-[#6F4E37] dark:text-[#F5E6D3] font-bold">$4.85</span>
+                    </div>
+                    <p class="text-stone-500 dark:text-stone-400 text-xs line-clamp-2">Slow steeped for exactly 16 hours to minimize natural acidity levels, delivering smooth consistency and sustained clean energy.</p>
+                </div>
+                <div class="bg-white dark:bg-[#12110F] rounded-2xl overflow-hidden p-5 shadow-sm hover:shadow-xl transition-all duration-300 group border border-stone-200/40 dark:border-stone-800/60">
+                    <div class="relative h-56 rounded-xl overflow-hidden mb-4">
+                        <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&q=80&w=600" alt="Premium Cappuccino" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="flex justify-between items-center mb-1">
+                        <h3 class="font-heading font-bold text-lg">Microfoam Cappuccino</h3>
+                        <span class="text-[#6F4E37] dark:text-[#F5E6D3] font-bold">$4.25</span>
+                    </div>
+                    <p class="text-stone-500 dark:text-stone-400 text-xs line-clamp-2">Balanced dark roasted espresso base combined with velvety dense texturized microfoam structure toppings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="product" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+             x-data="{ 
+                currentCategory: 'All',
+                searchQuery: '',
+                menuItems: [
+                    { name: 'House Double Espresso', category: 'Espresso', price: '$3.50', rating: '4.9', desc: 'Flawless extraction from premium single-estate arabica bean sourcing profiles.', img: 'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?auto=format&fit=crop&q=80&w=500' },
+                    { name: 'Velvet Vanilla Latte', category: 'Latte', price: '$4.50', rating: '4.8', desc: 'Premium custom espresso layers paired with smooth steamed whole milk options.', img: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&q=80&w=500' },
+                    { name: 'Microfoam Cappuccino', category: 'Cappuccino', price: '$4.25', rating: '4.7', desc: 'Balanced dark roasted espresso base combined with velvety dense texturized microfoam.', img: 'https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&q=80&w=500' },
+                    { name: 'Craft Nitro Cold Brew', category: 'Cold Brew', price: '$4.85', rating: '5.0', desc: 'Slow steeped for exactly 16 hours to minimize natural acidity levels.', img: 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=80&w=500' },
+                    { name: 'Fudge Walnut Brownie', category: 'Desserts', price: '$3.95', rating: '4.9', desc: 'Rich multi-layer dark chocolate fudge bake complete with fresh California walnuts.', img: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&q=80&w=500' },
+                    { name: 'Matcha Infusion Latte', category: 'Latte', price: '$5.00', rating: '4.6', desc: 'Pure stone-ground authentic Japanese green tea powder whisked to velvet textures.', img: 'https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&q=80&w=500' }
+                ],
+                get filteredMenu() {
+                    return this.menuItems.filter(item => {
+                        const matchesCategory = this.currentCategory === 'All' || item.category === this.currentCategory;
+                        const matchesSearch = item.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+                        return matchesCategory && matchesSearch;
+                    });
+                }
+             }">
+        
+        <div class="text-center max-w-2xl mx-auto space-y-3 mb-16">
+            <h2 class="font-heading font-bold text-4xl text-stone-900 dark:text-white">Explore Our Premium Menu</h2>
+            <div class="w-12 h-1 bg-[#355E3B] mx-auto rounded-full"></div>
+            <p class="text-stone-500 dark:text-stone-400 text-sm">Every order acts as an unforgettable moment to elevate your day positively.</p>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-6 justify-between items-center mb-12 pb-6 border-b border-stone-200 dark:border-stone-800">
+            <div class="flex flex-wrap gap-2 justify-center">
+                <template x-for="category in ['All', 'Espresso', 'Latte', 'Cappuccino', 'Cold Brew', 'Desserts']">
+                    <button @click="currentCategory = category" 
+                            :class="currentCategory === category ? 'bg-[#6F4E37] text-white shadow-md' : 'bg-stone-200/60 text-stone-700 dark:bg-stone-800 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700'"
+                            class="px-5 py-2 rounded-xl text-xs font-heading font-bold tracking-wider uppercase transition-all cursor-pointer"
+                            x-text="category">
+                    </button>
+                </template>
+            </div>
+            <div class="relative w-full md:w-80">
+                <span class="absolute inset-y-0 left-4 flex items-center text-stone-400 text-sm">🔍</span>
+                <input type="text" x-model="searchQuery" placeholder="Search craft items..." 
+                       class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-900 focus:outline-none focus:ring-2 focus:ring-[#6F4E37] text-sm">
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <template x-for="item in filteredMenu" :key="item.name">
+                <div class="bg-white dark:bg-stone-900 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl border border-stone-100 dark:border-stone-800/80 transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-60 overflow-hidden bg-stone-100 dark:bg-stone-800">
+                            <img :src="item.img" :alt="item.name" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <span class="absolute top-4 right-4 bg-[#FAF7F2]/95 dark:bg-stone-900/95 backdrop-blur-sm text-[#6F4E37] dark:text-[#F5E6D3] font-heading font-bold text-sm px-3.5 py-1.5 rounded-xl shadow" x-text="item.price"></span>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <div class="flex justify-between items-center">
+                                <h3 class="font-heading font-bold text-lg text-stone-900 dark:text-white transition-colors" x-text="item.name"></h3>
+                                <div class="flex items-center gap-1 text-amber-500 text-sm flex-shrink-0">
+                                    <span>★</span> <span class="text-stone-600 dark:text-stone-400 font-medium text-xs" x-text="item.rating"></span>
+                                </div>
+                            </div>
+                            <p class="text-stone-500 dark:text-stone-400 text-xs leading-relaxed" x-text="item.desc"></p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex justify-between items-center">
+                        <span class="text-[10px] tracking-widest uppercase font-bold text-stone-400" x-text="item.category"></span>
+                        <button class="bg-[#355E3B]/10 text-[#355E3B] dark:text-[#F5E6D3] hover:bg-[#355E3B] hover:text-white px-4 py-2 rounded-xl text-xs font-heading font-bold transition-all cursor-pointer">
+                            Order Now
+                        </button>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </section>
+
+    <section id="promotion" class="bg-[#355E3B] dark:bg-[#1B3320] py-24 text-white transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto space-y-2 mb-16">
+                <span class="text-[#F5E6D3] uppercase tracking-widest text-xs font-bold block">Seasonal Perks</span>
+                <h2 class="font-heading font-bold text-4xl">Limited Campaign Discounts</h2>
+                <div class="w-12 h-0.5 bg-[#F5E6D3] mx-auto rounded-full"></div>
+            </div>
+
+            <div class="bg-[#FAF7F2] text-stone-900 dark:bg-[#12110F] dark:text-white rounded-3xl p-8 md:p-12 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8 mb-16 border border-stone-200/10"
+                 x-data="{
+                    timerTarget: new Date().getTime() + (4 * 24 * 60 * 60 * 1000),
+                    daysRemaining: '04', hoursRemaining: '00', minsRemaining: '00', secsRemaining: '00',
+                    calculateTime() {
+                        const structuralDiff = this.timerTarget - new Date().getTime();
+                        this.daysRemaining = String(Math.floor(structuralDiff / (1000*60*60*24))).padStart(2, '0');
+                        this.hoursRemaining = String(Math.floor((structuralDiff % (1000*60*60*24)) / (1000*60*60))).padStart(2, '0');
+                        this.minsRemaining = String(Math.floor((structuralDiff % (1000*60*60)) / (1000*60))).padStart(2, '0');
+                        this.secsRemaining = String(Math.floor((structuralDiff % (1000*60)) / 1000)).padStart(2, '0');
+                    },
+                    init() { setInterval(() => this.calculateTime(), 1000); }
+                 }">
+                <div class="max-w-md text-center lg:text-left space-y-4">
+                    <span class="bg-[#8B2E2E] text-white text-[10px] font-heading font-bold uppercase tracking-widest px-3 py-1 rounded-full">Limited Winter Release</span>
+                    <h3 class="font-heading font-bold text-3xl text-[#6F4E37] dark:text-[#F5E6D3]">Cinnamon Spice Mocha Event</h3>
+                    <p class="text-stone-500 dark:text-stone-400 text-sm leading-relaxed">Infused organically with hand-selected cinnamon sticks from verified local small-batch roastery harvests.</p>
+                    <div class="text-[#8B2E2E] font-bold text-lg dark:text-[#FFA4A4]">Get 25% Off Before Campaign Expiry!</div>
+                </div>
+                
+                <div class="flex gap-4 text-center">
+                    <div class="bg-stone-200/60 dark:bg-stone-800 p-4 rounded-2xl min-w-[72px]">
+                        <span class="block font-heading font-bold text-3xl text-[#355E3B] dark:text-[#F5E6D3]" x-text="daysRemaining"></span>
+                        <span class="text-[10px] uppercase text-stone-400 tracking-wider">Days</span>
+                    </div>
+                    <div class="bg-stone-200/60 dark:bg-stone-800 p-4 rounded-2xl min-w-[72px]">
+                        <span class="block font-heading font-bold text-3xl text-[#355E3B] dark:text-[#F5E6D3]" x-text="hoursRemaining"></span>
+                        <span class="text-[10px] uppercase text-stone-400 tracking-wider">Hours</span>
+                    </div>
+                    <div class="bg-stone-200/60 dark:bg-stone-800 p-4 rounded-2xl min-w-[72px]">
+                        <span class="block font-heading font-bold text-3xl text-[#355E3B] dark:text-[#F5E6D3]" x-text="minsRemaining"></span>
+                        <span class="text-[10px] uppercase text-stone-400 tracking-wider">Mins</span>
+                    </div>
+                    <div class="bg-stone-200/60 dark:bg-stone-800 p-4 rounded-2xl min-w-[72px]">
+                        <span class="block font-heading font-bold text-3xl text-[#355E3B] dark:text-[#F5E6D3]" x-text="secsRemaining"></span>
+                        <span class="text-[10px] uppercase text-stone-400 tracking-wider">Secs</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+                <div class="bg-[#FAF7F2] text-stone-900 dark:bg-[#12110F] dark:text-white rounded-3xl p-6 flex flex-col sm:flex-row gap-6 items-center border border-stone-200/10 shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=300" alt="Combo Product 1" class="w-28 h-28 object-cover rounded-2xl shadow-md">
+                    <div class="space-y-1 text-center sm:text-left flex-1">
+                        <h4 class="font-heading font-bold text-xl text-stone-900 dark:text-white">Morning Alignment Combo</h4>
+                        <p class="text-stone-500 dark:text-stone-400 text-xs">Any standard hot espresso variation served with our artisanal sourdough bake options.</p>
+                        <div class="flex items-center justify-between pt-3">
+                            <span class="text-xl font-bold text-[#355E3B] dark:text-[#F5E6D3]">$6.50 <span class="text-stone-400 font-normal line-through text-xs">$8.50</span></span>
+                            <span class="text-[10px] font-heading font-bold bg-[#8B2E2E]/10 text-[#8B2E2E] dark:text-[#FFA4A4] px-3 py-1 rounded-full">Save $2.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-[#FAF7F2] text-stone-900 dark:bg-[#12110F] dark:text-white rounded-3xl p-6 flex flex-col sm:flex-row gap-6 items-center border border-stone-200/10 shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&q=80&w=300" alt="Combo Product 2" class="w-28 h-28 object-cover rounded-2xl shadow-md">
+                    <div class="space-y-1 text-center sm:text-left flex-1">
+                        <h4 class="font-heading font-bold text-xl text-stone-900 dark:text-white">Afternoon Reset Package</h4>
+                        <p class="text-stone-500 dark:text-stone-400 text-xs">Pair your signature nitro slow cold brew selection alongside a fresh rich fudge walnut brownie slice.</p>
+                        <div class="flex items-center justify-between pt-3">
+                            <span class="text-xl font-bold text-[#355E3B] dark:text-[#F5E6D3]">$7.75 <span class="text-stone-400 font-normal line-through text-xs">$9.50</span></span>
+                            <span class="text-[10px] font-heading font-bold bg-[#8B2E2E]/10 text-[#8B2E2E] dark:text-[#FFA4A4] px-3 py-1 rounded-full">Save $1.75</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-stone-950 rounded-3xl p-8 text-center border border-[#F5E6D3]/20 max-w-4xl mx-auto space-y-4 shadow-xl">
+                <h3 class="font-heading font-bold text-2xl text-[#F5E6D3]">Peng Loyalty Collectives</h3>
+                <p class="text-stone-400 max-w-xl mx-auto text-xs leading-relaxed">Collect virtual star stamps inside our secure store register with each individual checkout to receive completely free 10th-order craft coffee beverages.</p>
+                <div class="pt-2">
+                    <button class="bg-[#6F4E37] text-white px-8 py-3 rounded-xl font-heading font-bold text-xs tracking-wider uppercase hover:bg-[#593E2B] transition-colors shadow-md border border-white/10 cursor-pointer">Register Loyalty Account</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-28">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-6">
+                <span class="text-[#6F4E37] uppercase tracking-widest text-xs font-bold block">Our Legacy</span>
+                <h2 class="font-heading font-bold text-4xl text-stone-900 dark:text-white">Our Coffee Story</h2>
+                <p class="text-stone-500 dark:text-stone-400 text-sm leading-relaxed">
+                    Peng Cofe was created to inspire happiness, connection, and energy through every cup of coffee. Our goal is to create a warm and welcoming place where people can relax, connect, and start their day positively with premium coffee and unforgettable moments.
+                </p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+                    <div class="bg-white dark:bg-stone-900 p-5 rounded-2xl shadow-sm border border-stone-100 dark:border-stone-800">
+                        <span class="text-xl block mb-2">🎯</span>
+                        <h4 class="font-heading font-bold text-sm text-[#355E3B] dark:text-[#F5E6D3] mb-1">Our Mission</h4>
+                        <p class="text-stone-500 dark:text-stone-400 text-xs leading-relaxed">To deliver a warm, comforting hug in a mug that brightens your mood and connects communities.</p>
+                    </div>
+                    <div class="bg-white dark:bg-stone-900 p-5 rounded-2xl shadow-sm border border-stone-100 dark:border-stone-800">
+                        <span class="text-xl block mb-2">✨</span>
+                        <h4 class="font-heading font-bold text-sm text-[#8B2E2E] dark:text-[#FFA4A4] mb-1">Our Vision</h4>
+                        <p class="text-stone-500 dark:text-stone-400 text-xs leading-relaxed">To build a happier, more connected world that starts with a positive attitude and a perfect brew every single morning.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative">
+                <div class="absolute inset-0 bg-[#6F4E37] rounded-3xl transform rotate-3 scale-95 opacity-10"></div>
+                <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&q=80&w=800" alt="Artisan Roasting Processing" class="rounded-3xl shadow-xl relative z-10 w-full h-[400px] object-cover">
+            </div>
+        </div>
+
+        <div class="bg-[#F5E6D3]/60 dark:bg-stone-900 rounded-3xl p-8 md:p-12 grid grid-cols-1 md:grid-cols-3 gap-8 items-center border border-stone-200/50 dark:border-stone-800">
+            <div class="space-y-2">
+                <span class="text-xs font-bold text-[#6F4E37] uppercase tracking-wider">Bean Processing</span>
+                <h3 class="font-heading font-bold text-2xl text-stone-900 dark:text-white">Ethically Sourced, Artfully Roasted</h3>
+                <p class="text-stone-500 dark:text-stone-400 text-xs leading-relaxed">We select raw crops directly from family-run high altitude plantations globally.</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-stone-800/50 rounded-2xl space-y-2">
+                <div class="text-lg">🌿</div>
+                <h4 class="font-heading font-bold text-sm">Direct Trade Channels</h4>
+                <p class="text-stone-500 dark:text-stone-400 text-xs">Ensuring healthy community compensation directly to local agricultural harvesters.</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-stone-800/50 rounded-2xl space-y-2">
+                <div class="text-lg">🔥</div>
+                <h4 class="font-heading font-bold text-sm">Precision Micro-Roasting</h4>
+                <p class="text-stone-500 dark:text-stone-400 text-xs">Small batches engineered carefully each morning to highlight native origin profile notes.</p>
+            </div>
+        </div>
+
+        <div class="space-y-12">
+            <div class="text-center max-w-xl mx-auto space-y-2">
+                <h3 class="font-heading font-bold text-3xl">Meet Our Founders</h3>
+                <p class="text-stone-500 dark:text-stone-400 text-sm">The dedicated creators driving the positive vision of Peng Cofe.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+                <div class="text-center space-y-3 group">
+                    <div class="w-32 h-32 rounded-full overflow-hidden mx-auto border-4 border-white dark:border-stone-800 shadow-lg relative bg-stone-300">
+                        <img src="C:\Users\Setha.Chan\Downloads\photo_2026-05-25_11-04-31.jpg" alt="Mr Yasmin Toyeb" class="w-full h-full object-cover transition-transform group-hover:scale-105">
+                    </div>
+                    <div>
+                        <h4 class="font-heading font-bold text-base">Mr Yasmin Toyeb</h4>
+                        <p class="text-[#6F4E37] dark:text-[#F5E6D3] text-xs font-medium">Co-Founder & Chief Roaster</p>
+                    </div>
+                </div>
+                <div class="text-center space-y-3 group">
+                    <div class="w-32 h-32 rounded-full overflow-hidden mx-auto border-4 border-white dark:border-stone-800 shadow-lg relative bg-stone-300">
+                        <img src="C:\Users\Setha.Chan\Downloads\photo_2024-11-15_14-43-21.jpg" alt="Mr Setha Chan" class="w-full h-full object-cover transition-transform group-hover:scale-105">
+                    </div>
+                    <div>
+                        <h4 class="font-heading font-bold text-base">Mr Setha Chan</h4>
+                        <p class="text-[#6F4E37] dark:text-[#F5E6D3] text-xs font-medium">Co-Founder & Business Lead</p>
+                    </div>
+                </div>
+                <div class="text-center space-y-3 group">
+                    <div class="w-32 h-32 rounded-full overflow-hidden mx-auto border-4 border-white dark:border-stone-800 shadow-lg relative bg-stone-300">
+                        <img src="C:\Users\Setha.Chan\Downloads\photo_2026-01-28_06-11-01.jpg" alt="Ms Sokyi Koy" class="w-full h-full object-cover transition-transform group-hover:scale-105">
+                    </div>
+                    <div>
+                        <h4 class="font-heading font-bold text-base">Ms Sokyi Koy</h4>
+                        <p class="text-[#6F4E37] dark:text-[#F5E6D3] text-xs font-medium">Co-Founder & Head Barista</p>
+                    </div>
+                </div>
+                <div class="text-center space-y-3 group">
+                    <div class="w-32 h-32 rounded-full overflow-hidden mx-auto border-4 border-white dark:border-stone-800 shadow-lg relative bg-stone-300">
+                        <img src="C:\Users\Setha.Chan\Downloads\photo_2026-05-25_14-12-47.jpg" alt="Ms Rina Dong" class="w-full h-full object-cover transition-transform group-hover:scale-105">
+                    </div>
+                    <div>
+                        <h4 class="font-heading font-bold text-base">Ms Rina Dong</h4>
+                        <p class="text-[#6F4E37] dark:text-[#F5E6D3] text-xs font-medium">Co-Founder & Operations Director</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-6">
+            <div class="text-center max-w-md mx-auto scroll-mt-24" id="gallery">
+                <h3 class="font-heading font-bold text-2xl">Cozy Studio Gallery</h3>
+                <p class="text-stone-500 dark:text-stone-400 text-xs mt-1">Capture primum community spaces over the social hashtag <span class="font-semibold text-[#6F4E37]">#PengCofe</span></p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="h-44 rounded-2xl overflow-hidden shadow-sm"><img src="C:\Users\Setha.Chan\Downloads\photo_2026-05-25_14-03-11.jpg" alt="Atmosphere 1" class="w-full h-full object-cover hover:opacity-80 transition-opacity duration-300"></div>
+                <div class="h-44 rounded-2xl overflow-hidden shadow-sm"><img src="C:\Users\Setha.Chan\Downloads\photo_2026-05-25_14-03-03.jpg" alt="Atmosphere 2" class="w-full h-full object-cover hover:opacity-80 transition-opacity duration-300"></div>
+                <div class="h-44 rounded-2xl overflow-hidden shadow-sm"><img src="C:\Users\Setha.Chan\Downloads\photo_2026-05-25_14-03-07.jpg" alt="Atmosphere 3" class="w-full h-full object-cover hover:opacity-80 transition-opacity duration-300"></div>
+                <div class="h-44 rounded-2xl overflow-hidden shadow-sm"><img src="C:\Users\Setha.Chan\Downloads\4abb2631-e3ba-4f41-a4b3-9e0463e57bec.jpg" alt="Atmosphere 4" class="w-full h-full object-cover hover:opacity-80 transition-opacity duration-300"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-[#F5E6D3]/40 dark:bg-[#1A1916] border-y border-stone-200 dark:border-stone-800 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="font-heading font-bold text-3xl text-center text-stone-900 dark:text-white mb-16">Stories Shared by Our Community</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-sm border border-stone-200/20">
+                    <div class="text-amber-500 mb-3">★★★★★</div>
+                    <p class="text-stone-600 dark:text-stone-400 text-sm italic leading-relaxed">"The mission statement isn't just words—every hot cup genuinely feels like a comfort hug. The cozy interior serves as my premium creative office space."</p>
+                    <h5 class="font-heading font-bold text-xs mt-4 tracking-wide text-stone-900 dark:text-stone-300">— Aris T., Designer</h5>
+                </div>
+                <div class="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-sm border border-stone-200/20">
+                    <div class="text-amber-500 mb-3">★★★★★</div>
+                    <p class="text-stone-600 dark:text-stone-400 text-sm italic leading-relaxed">"Their 16-hour nitro cold brew profile is incredibly smooth. Peng Cofe brings a completely refreshed lifestyle perspective to premium morning coffee."</p>
+                    <h5 class="font-heading font-bold text-xs mt-4 tracking-wide text-stone-900 dark:text-stone-300">— Liam K., Strategist</h5>
+                </div>
+                <div class="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-sm border border-stone-200/20">
+                    <div class="text-amber-500 mb-3">★★★★★</div>
+                    <p class="text-stone-600 dark:text-stone-400 text-sm italic leading-relaxed">"Incredible alignment, prompt hospitality staff, and ethically tracked bean sourcing. My absolute favorite local cafe destination."</p>
+                    <h5 class="font-heading font-bold text-xs mt-4 tracking-wide text-stone-900 dark:text-stone-300">— Natalia R., Artist</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-28">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            
+            <div class="space-y-8">
+                <div class="space-y-3">
+                    <h2 class="font-heading font-bold text-4xl text-stone-900 dark:text-white">Visit Our Sanctuary</h2>
+                    <p class="text-stone-500 dark:text-stone-400 text-sm">Stop by to grab a fresh extraction or reach out directly channels for quick delivery support inquiries.</p>
+                </div>
+                
+                <div class="space-y-4 border-t border-stone-200 dark:border-stone-800 pt-6 text-sm">
+                    <div class="flex items-start gap-4">
+                        <span class="text-xl">📍</span>
+                        <div>
+                            <h5 class="font-heading font-bold">Physical Store Location</h5>
+                            <p class="text-stone-500 dark:text-stone-400 mt-0.5">742 Roastery Boulevard, Core Retail Zone, Downtown</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="text-xl">📞</span>
+                        <div>
+                            <h5 class="font-heading font-bold">Direct Channels (Telegram)</h5>
+                            <p class="text-stone-500 dark:text-stone-400 mt-0.5">+855 974-358-859 | pengcofee@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-[#F5E6D3]/60 dark:bg-stone-900 p-6 rounded-2xl border border-stone-200/50 dark:border-stone-800/80">
+                    <h4 class="font-heading font-bold text-sm text-[#6F4E37] dark:text-[#F5E6D3] mb-3">🕒 Store Operating Schedule</h4>
+                    <div class="space-y-2 text-xs text-stone-600 dark:text-stone-400">
+                        <div class="flex justify-between"><span>Monday – Friday</span><span class="font-bold">6:30 AM – 8:30 PM</span></div>
+                        <div class="flex justify-between"><span>Saturday</span><span class="font-bold">7:00 AM – 9:30 PM</span></div>
+                        <div class="flex justify-between"><span>Sunday Community Days</span><span class="font-bold">8:00 AM – 7:00 PM</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-stone-900 p-8 rounded-3xl shadow-sm border border-stone-200/50 dark:border-stone-800"
+                 x-data="{ feedbackSubmitted: false, userName: '', userEmail: '', userNote: '' }">
+                <div x-show="!feedbackSubmitted" class="space-y-6">
+                    <h3 class="font-heading font-bold text-xl">Leave Us a Note</h3>
+                    <form @submit.prevent="feedbackSubmitted = true" class="space-y-4">
+                        <div>
+                            <label class="block text-[10px] uppercase font-bold tracking-wider text-stone-400 mb-1.5">Your Name</label>
+                            <input type="text" x-model="userName" required class="w-full px-4 py-3 rounded-xl border border-stone-200 dark:border-stone-800 bg-[#FAF7F2] dark:bg-stone-950 text-sm focus:outline-none focus:ring-2 focus:ring-[#6F4E37]">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] uppercase font-bold tracking-wider text-stone-400 mb-1.5">Email Address</label>
+                            <input type="email" x-model="userEmail" required class="w-full px-4 py-3 rounded-xl border border-stone-200 dark:border-stone-800 bg-[#FAF7F2] dark:bg-stone-950 text-sm focus:outline-none focus:ring-2 focus:ring-[#6F4E37]">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] uppercase font-bold tracking-wider text-stone-400 mb-1.5">Message Content</label>
+                            <textarea rows="4" x-model="userNote" required class="w-full px-4 py-3 rounded-xl border border-stone-200 dark:border-stone-800 bg-[#FAF7F2] dark:bg-stone-950 text-sm focus:outline-none focus:ring-2 focus:ring-[#6F4E37]"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-[#355E3B] hover:bg-[#27462C] text-white py-3 rounded-xl font-heading font-bold text-xs tracking-wider uppercase transition-colors shadow cursor-pointer">
+                            Submit Form Message
+                        </button>
+                    </form>
+                </div>
+                <div x-show="feedbackSubmitted" class="text-center py-12 space-y-3" x-cloak>
+                    <span class="text-4xl inline-block animate-bounce">📬</span>
+                    <h4 class="font-heading font-bold text-2xl text-[#355E3B] dark:text-[#F5E6D3]">Message Received, <span x-text="userName"></span>!</h4>
+                    <p class="text-stone-400 text-xs max-w-xs mx-auto">Our founders will reply to <span class="text-stone-700 dark:text-white font-medium" x-text="userEmail"></span> within 12 business hours.</p>
+                    <button @click="feedbackSubmitted = false; userName=''; userEmail=''; userNote=''" class="text-xs text-[#6F4E37] dark:text-[#F5E6D3] underline font-medium mt-4 block mx-auto cursor-pointer">Submit a new form message</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full h-80 rounded-3xl overflow-hidden border border-stone-200 dark:border-stone-800 relative bg-stone-300 dark:bg-stone-950">
+            <iframe class="w-full h-full grayscale-[25%] contrast-115 dark:invert dark:opacity-80" src="https://maps.google.com/maps?q=london&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+        <div class="max-w-3xl mx-auto space-y-4">
+            <h3 class="font-heading font-bold text-3xl text-center mb-8">Curiosities & FAQs</h3>
+            
+            <div x-data="{ faqState: false }" class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-200/60 dark:border-stone-800 overflow-hidden">
+                <button @click="faqState = !faqState" class="w-full p-5 text-left font-heading font-bold text-sm flex justify-between items-center text-stone-900 dark:text-white cursor-pointer">
+                    <span>What precisely specifies "Peng Coffee" single-origin quality?</span>
+                    <span class="text-lg transition-transform duration-300" :class="faqState ? 'rotate-180' : ''">▾</span>
+                </button>
+                <div x-show="faqState" x-transition class="px-5 pb-5 text-xs text-stone-500 dark:text-stone-400 border-t border-stone-100 dark:border-stone-800/60 pt-4 leading-relaxed">
+                    Our coffee is sourced entirely from independent micro-farms without any additive commodity blending. This process captures natural local fruit sweetness and crisp profiles that disappear inside traditional large batch production.
+                </div>
+            </div>
+
+            <div x-data="{ faqState: false }" class="bg-white dark:bg-stone-900 rounded-2xl border border-stone-200/60 dark:border-stone-800 overflow-hidden">
+                <button @click="faqState = !faqState" class="w-full p-5 text-left font-heading font-bold text-sm flex justify-between items-center text-stone-900 dark:text-white cursor-pointer">
+                    <span>Are alternative plant-based formulations available?</span>
+                    <span class="text-lg transition-transform duration-300" :class="faqState ? 'rotate-180' : ''">▾</span>
+                </button>
+                <div x-show="faqState" x-transition class="px-5 pb-5 text-xs text-stone-500 dark:text-stone-400 border-t border-stone-100 dark:border-stone-800/60 pt-4 leading-relaxed">
+                    Yes, we offer organic oat, premium coconut blend, and almond bases daily to accommodate lactose-free and health preferences perfectly.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-stone-950 text-stone-400 pt-16 pb-8 border-t border-[#6F4E37]/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12 pb-12 border-b border-stone-900">
+            <div class="space-y-4">
+                <h3 class="font-logo text-3xl text-[#F5E6D3] tracking-wide">Peng Cofe</h3>
+                <p class="text-xs font-light leading-relaxed">To deliver a warm, comforting hug in a mug that brightens your mood and connects communities.</p>
+                <div class="flex space-x-4 pt-2 text-sm text-stone-300">
+                    <a href="#" class="hover:text-[#F5E6D3] transition-colors">📸 Instagram</a>
+                    <a href="#" class="hover:text-[#F5E6D3] transition-colors">📘 Facebook</a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="text-white font-heading font-bold text-xs tracking-widest uppercase mb-4">Navigation Links</h4>
+                <ul class="space-y-2.5 text-xs">
+                    <li><a href="#home" class="hover:text-white transition-colors">Home Studio</a></li>
+                    <li><a href="#product" class="hover:text-white transition-colors">Interactive Menu</a></li>
+                    <li><a href="#promotion" class="hover:text-white transition-colors">Special Campaign</a></li>
+                    <li><a href="#about" class="hover:text-white transition-colors">Our Founders</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="text-white font-heading font-bold text-xs tracking-widest uppercase mb-4">Legal Support</h4>
+                <ul class="space-y-2.5 text-xs">
+                    <li><a href="#contact" class="hover:text-white transition-colors">Map Channels</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Privacy Charter</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-heading font-bold text-xs tracking-widest uppercase mb-4">The Digital Journal</h4>
+                <p class="text-[11px] text-stone-500 mb-3">Join our newsletter list for micro-batch crop release warnings.</p>
+                <div class="flex rounded-xl overflow-hidden border border-stone-800 bg-stone-900 p-1 text-xs">
+                    <input type="email" placeholder="Email Address" class="w-full px-3 py-2 bg-transparent focus:outline-none text-white text-xs">
+                    <button class="bg-[#6F4E37] text-white font-heading font-bold px-4 py-2 rounded-lg hover:bg-[#593E2B] transition-colors cursor-pointer">Join</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row justify-between items-center text-[11px] text-stone-600 gap-4">
+            <p>© 2026 Peng Cofe. All Rights Reserved. Created by Yasmin, Setha, Sokyi, and Rina.</p>
+            <p>Premium Cozy Interface ☕✨</p>
+        </div>
+    </footer>
+
+</body>
+</html>
